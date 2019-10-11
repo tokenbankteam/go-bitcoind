@@ -153,8 +153,8 @@ func (b *Bitcoind) GetBlock(blockHash string) (block Block, err error) {
 }
 
 // GetBlock returns information about the block with the given hash.
-func (b *Bitcoind) GetBlock1(blockHash string) (block Block, err error) {
-	r, err := b.client.call("getblock", []interface{}{blockHash, 2})
+func (b *Bitcoind) GetBlockVerbose(blockHash string, verbose int64) (block Block, err error) {
+	r, err := b.client.call("getblock", []interface{}{blockHash, verbose})
 	if err = handleError(err, &r); err != nil {
 		return
 	}
